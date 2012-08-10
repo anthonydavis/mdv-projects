@@ -11,11 +11,11 @@ intro($gym);
 
 var $goToGym = workOut($offDay, $onDay);
 
-var totalHrsCardio = amtOfCardio($numCupcakes);
+var $totalCarloriesCardio = amtOfCardio($numCupcakes);
 
 var $saying = createSaying($saying1, $saying2);
 
-var $bodypartToWorkout = chooseBodyPart($hrWorkout, $bodypart);
+var $bodypartSetAmt = chooseBodyPart($hrWorkout, $bodypart);
 
 
 
@@ -35,11 +35,14 @@ function workOut( $offDay, $onDay )
     if( $onDay[0] == "monday" || $onDay[1] == "tuesday" && $onDay[2] == "wednesday" && $onDay[3] == "thursday" || !$onDay[0] == "sunday" )
     {
         console.log( "He first decided to check his workout log and make sure today was a day off from the gym or not, and it looks like he needs to go" );
-        return true;
+        $goWorkout = true;
+        return $goWorkout;
     }else
      {
         console.log( "He first decided to check his workout log and make sure today was a day off from the gym or not, and it looks like he gets to rest for the day" );
-         return false;
+        $dontWorkout = false;
+        return $dontWorkout;
+
      };
 
 };
@@ -61,6 +64,8 @@ function amtOfCardio($numCupcakes)
 
     return $totalCardio;
 };
+
+
 
 function createSaying($saying1, $saying2)
 {
@@ -93,4 +98,14 @@ function chooseBodyPart($hrWorkout, $bodypart)
     return $setTimeAmt;
 };
 
-console.log("It's true that Brandon Bambino works out today.");
+console.log("It's " + $goToGym + " that Brandon Bambino works out today.");
+console.log("He will need to burn: " + $totalCarloriesCardio + " calories with cardio after his workout!");
+console.log("Brandon Bambino likes to yell out: " + $saying + " when he lifts weights!");
+console.log("Each set he completes needs to take: ");
+
+for(var $i = 0; $i < $bodypartSetAmt.length; $i++)
+{
+    var $bodypart = ["chest", "back", "shoulders", "legs", "arms"];
+    console.log("For " + $bodypart[$i] + ": " + $bodypartSetAmt[$i] + " seconds!")
+
+};
