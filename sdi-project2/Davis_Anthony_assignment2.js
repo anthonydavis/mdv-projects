@@ -2,9 +2,10 @@ var $gym = "Golds";
 var $numCupcakes = 3;
 var $offDay = ["sunday"];
 var $onDay = ["monday", "tuesday", "wednesday", "thursday", "friday"];
-var $bodyPart = ["chest", "back", "shoulders", "legs", "arms"];
+var $bodypart = ["chest", "back", "shoulders", "legs", "arms"];
 var $saying1 = "light weight!";
 var $saying2 = "baby!";
+var $hrWorkout = 2;
 
 intro($gym);
 
@@ -13,6 +14,8 @@ var $goToGym = workOut($offDay, $onDay);
 var totalHrsCardio = amtOfCardio($numCupcakes);
 
 var $saying = createSaying($saying1, $saying2);
+
+var $bodypartToWorkout = chooseBodyPart($hrWorkout, $bodypart);
 
 
 
@@ -64,3 +67,30 @@ function createSaying($saying1, $saying2)
     var $completeSaying = $saying1 + " " + $saying2;
     return $completeSaying;
 };
+
+function chooseBodyPart($hrWorkout, $bodypart)
+{
+    var $bodyPartToWork
+    [
+        $chest      = 4,
+        $back       = 5,
+        $shoulders  = 4,
+        $legs       = 5,
+        $arms       = 4
+    ];
+
+    var $setTime = [$chest, $back, $shoulders, $legs, $arms];
+    var $setTimeAmt = [];
+
+    console.log("The body parts he can choose to work out are: " );
+
+    for(var $i = 0; $i < $bodypart.length; $i++)
+    {
+        console.log($bodypart[$i]);
+        $setTimeAmt.push(120 / $setTime[$i]);
+    };
+
+    return $setTimeAmt;
+};
+
+console.log("It's true that Brandon Bambino works out today.");
