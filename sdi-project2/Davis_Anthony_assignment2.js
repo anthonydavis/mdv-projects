@@ -3,12 +3,17 @@ var $numCupcakes = 3;
 var $offDay = ["sunday"];
 var $onDay = ["monday", "tuesday", "wednesday", "thursday", "friday"];
 var $bodyPart = ["chest", "back", "shoulders", "legs", "arms"];
+var $saying1 = "light weight!";
+var $saying2 = "baby!";
 
 intro($gym);
 
 var $goToGym = workOut($offDay, $onDay);
 
 var totalHrsCardio = amtOfCardio($numCupcakes);
+
+var $saying = createSaying($saying1, $saying2);
+
 
 
 function intro($gym)
@@ -54,3 +59,8 @@ function amtOfCardio($numCupcakes)
     return $totalCardio;
 };
 
+function createSaying($saying1, $saying2)
+{
+    var $completeSaying = $saying1 + " " + $saying2;
+    return $completeSaying;
+};
