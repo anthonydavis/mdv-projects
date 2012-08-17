@@ -43,13 +43,6 @@ var profile = function(name){
         };
     };
 
-    var referral = function(friends){
-        // does he have friends to referr?
-        if(friends){
-            return friends;
-        }
-    };
-
     // mutator function
 
 
@@ -64,56 +57,52 @@ var profile = function(name){
 
 };
 
-var referral = function(friends){
-    // does he have friends to referr?
-    if(friends){
-        return friends;
-    }
-};
-
 var printStory = function(intro, brandonProfile){
+
+    var yearsTraining = brandonProfile.outputYearsTraining();
+
     console.log(intro);
     console.log("To his surprise one of the trainers wants to give him a free session, but first he must create a profile for him.");
     console.log("After some lengthy questions, the trainer puts together a profile.");
-
-    var brandonProfile = profile("Brandon");
-    var yearsTraining = brandonProfile.outputYearsTraining();
-
     console.log("From the information Brandon Bambino provided, here is his profile:");
     console.log("   " + "Name: " + brandonProfile.name);
     console.log("   " + "Years Training: " +  yearsTraining);
     console.log("   " + "Favorite Bodypart: " + brandonProfile.getFavoriteBodyPart());
     console.log("Brandon knew there would be a catch, after the profile was created he was pitched personal Training.");
 
+    var hisResponse = brandonProfile.wantToSignUp(response);
+    if(!hisResponse){
+        var answer = "No Thanks";
+    };
 
+    console.log("After the trainer was done talking he asked Brandon if he wanted to sign up, his response was: " + answer);
+    console.log("The Trainer asked Brandon if he wanted to list any friends as possible referrals, these are the names he listed:" );
+
+    var referral = function(friends){
+        // does he have friends to referr?
+        if(friends){
+            return friends;
+        }
+    };
+
+    var referrals = referral(friends);
+
+    console.log("   " + referrals[0] );
+    console.log("   " + referrals[1] );
+    console.log("   " + referrals[2] );
+
+    console.log("To be continued....");
 
 }
 
 var brandonProfile = profile("Brandon");
 
+printStory(intro,brandonProfile);
 
-printStory(intro);
-    
-console.log("From the information Brandon Bambino provided, here is his profile:");
-console.log("   " + "Name: " + brandonProfile.name);
-console.log("   " + "Years Training: " +  yearsTraining);
-console.log("   " + "Favorite Bodypart: " + brandonProfile.getFavoriteBodyPart());
-console.log("Brandon knew there would be a catch, after the profile was created he was pitched personal Training.");
 
-var hisResponse = brandonProfile.wantToSignUp(response);
-if(!hisResponse){
-    var answer = "No Thanks";
-};
 
-console.log("After the trainer was done talking he asked Brandon if he wanted to sign up, his response was: " + answer);
 
-console.log("The Trainer asked Brandon if he wanted to list any friends as possible referrals, these are the names he listed:" );
 
-var referral = referral(friends);
-
-console.log("   " + friends[0] );
-console.log("   " + friends[1] );
-console.log("   " + friends[2] );
 
 
 
