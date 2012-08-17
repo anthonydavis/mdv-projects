@@ -87,6 +87,17 @@ var printStory = function(intro, brandonProfile){
 
     var referrals = referral(friends);
 
+    var n = 0;
+    while(n < referrals.length){
+        for(i = 0; i < referrals.length; i++){
+          console.log("   " + referrals[i]);
+        };
+
+        if(i == 3){
+            break;
+        };
+
+    };
     console.log("   " + referrals[0] );
     console.log("   " + referrals[1] );
     console.log("   " + referrals[2] );
