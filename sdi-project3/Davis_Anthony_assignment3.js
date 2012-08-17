@@ -10,8 +10,9 @@ var intro = "Brandon Bambino finally made it to the gym!!! ";
 var profile = function(name){
     // local variables
     var name = name;
+    var bodyParts = ["chest","back","shoulders","legs","arms"];
 
-    // procedural function - output years training
+    // procedural function - does math and outputs years training
     var outputYearsTraining = function(){
         // local variables
         var ageStart = 18;
@@ -21,9 +22,17 @@ var profile = function(name){
         return yearsTraining;
     };
 
-    // function that does math?
-
     // accessor function
+    var getFavoriteBodyPart = function(){
+        for(i = 0; i < brandonProfile.bodyParts.length; i++){
+            if(brandonProfile.bodyParts[i] === "arms"){
+                var favoriteBodyPart = brandonProfile.bodyParts[i];
+            };
+        };
+
+        return favoriteBodyPart;
+
+    };
 
     // mutator function
 
@@ -31,7 +40,9 @@ var profile = function(name){
     // return object w/ key : value (boolean, array, number, string) w methods (procedure, function, accessor, mutator)
     return {
         "name"                : name,
-        "outputYearsTraining" : outputYearsTraining
+        "outputYearsTraining" : outputYearsTraining,
+        "bodyParts"           : bodyParts,
+        "getFavoriteBodyPart" : getFavoriteBodyPart
     };
 
 };
@@ -46,3 +57,21 @@ var yearsTraining = brandonProfile.outputYearsTraining();
 console.log("From the information Brandon Bambino provided, here is his profile:");
 console.log("   " + "Name: " + brandonProfile.name);
 console.log("   " + "Years Training: " +  yearsTraining);
+
+// function to get favorite bodypart
+var getFavoriteBodyPart = function(){
+
+
+    for(i = 0; i < brandonProfile.bodyParts.length; i++){
+        if(brandonProfile.bodyParts[i] === "arms"){
+            var favoriteBodyPart = brandonProfile.bodyParts[i];
+        };
+    };
+
+    return favoriteBodyPart;
+
+};
+
+console.log("   " + "Favorite Bodypart: " + brandonProfile.getFavoriteBodyPart());
+
+
