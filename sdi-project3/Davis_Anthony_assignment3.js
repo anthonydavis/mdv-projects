@@ -24,17 +24,6 @@ var profile = function(name){
         return yearsTraining;
     };
 
-    // accessor function
-    var getFavoriteBodyPart = function(){
-        for(i = 0; i < brandonProfile.bodyParts.length; i++){
-            if(brandonProfile.bodyParts[i] === "arms"){
-                var favoriteBodyPart = brandonProfile.bodyParts[i];
-            };
-        };
-
-        return favoriteBodyPart;
-
-    };
 
     // function to find response to personal training sign up - return boolean
     var wantToSignUp = function(response){
@@ -43,7 +32,7 @@ var profile = function(name){
         };
     };
 
-    // mutator function
+
 
 
     // return object w/ key : value (boolean, array, number, string) w methods (procedure, function, accessor, mutator)
@@ -54,6 +43,18 @@ var profile = function(name){
         "getFavoriteBodyPart" : getFavoriteBodyPart,
         "wantToSignUp"        : wantToSignUp
     };
+
+};
+
+// accessor function
+var getFavoriteBodyPart = function(){
+    for(i = 0; i < brandonProfile.bodyParts.length; i++){
+        if(brandonProfile.bodyParts[i] === "arms"){
+            var favoriteBodyPart = brandonProfile.bodyParts[i];
+        };
+    };
+
+    return favoriteBodyPart;
 
 };
 
@@ -93,14 +94,10 @@ var printStory = function(intro, brandonProfile){
           console.log("   " + referrals[i]);
         };
 
-        if(i == 3){
-            break;
-        };
+        break;
+
 
     };
-    console.log("   " + referrals[0] );
-    console.log("   " + referrals[1] );
-    console.log("   " + referrals[2] );
 
     console.log("To be continued....");
 
