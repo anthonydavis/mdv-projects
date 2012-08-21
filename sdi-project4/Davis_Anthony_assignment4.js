@@ -5,7 +5,15 @@
 var myLibrary = function(){
 
     // String Function: Does a string follow a 123-456-7890 pattern like a phone number?
+    var isPhoneNumber = function(number){
+        var re = /^(\d{3})-(\d{3})-(\d{4})$/;
 
+        if(re.test(number)){
+            return true;
+        }else{
+            return false;
+        };
+    };
 
 
 
@@ -53,19 +61,24 @@ var myLibrary = function(){
 
     // myLibrary Return key:value
     return{
-        "isURL"   : isURL,
-        "isEmail" : isEmail
+        "isURL"         : isURL,
+        "isEmail"       : isEmail,
+        "isPhoneNumber" : isPhoneNumber
     };
 
 };
 
-var email = "bob@bob.net";
-var url = "https://www.somesite.com";
+var phoneNumber = "111-111-1111";
+var email       = "bob@bob.net";
+var url         = "https://www.somesite.com";
 
 var myLib = new myLibrary();
 
-var isValidURL = myLib.isURL(url);
-console.log(isValidURL);
+var isValidPhoneNumber = myLib.isPhoneNumber(phoneNumber);
+console.log("Is " + phoneNumber + " a valid phone number: " + isValidPhoneNumber);
 
-var isValidEmail = myLib.isEmail(email);
-console.log(isValidEmail);
+var isValidEmail       = myLib.isEmail(email);
+console.log("Is " + email + " a valid email acccount: " + isValidEmail);
+
+var isValidURL         = myLib.isURL(url);
+console.log("Is " + url + " a valid URL: " + isValidURL);
