@@ -24,7 +24,6 @@ var profile = function(name){
         return yearsTraining;
     };
 
-
     // function to find response to personal training sign up - return boolean
     var wantToSignUp = function(response){
         if(!response){
@@ -33,14 +32,11 @@ var profile = function(name){
     };
 
 
-
-
     // return object w/ key : value (boolean, array, number, string) w methods (procedure, function, accessor, mutator)
     return {
         "name"                : name,
         "outputYearsTraining" : outputYearsTraining,
         "bodyParts"           : bodyParts,
-        "getFavoriteBodyPart" : getFavoriteBodyPart,
         "wantToSignUp"        : wantToSignUp
     };
 
@@ -60,6 +56,7 @@ var getFavoriteBodyPart = function(){
 
 var printStory = function(intro, brandonProfile){
 
+    var hisResponse = brandonProfile.wantToSignUp(response);
     var yearsTraining = brandonProfile.outputYearsTraining();
 
     console.log(intro);
@@ -71,7 +68,6 @@ var printStory = function(intro, brandonProfile){
     console.log("   " + "Favorite Bodypart: " + brandonProfile.getFavoriteBodyPart());
     console.log("Brandon knew there would be a catch, after the profile was created he was pitched personal Training.");
 
-    var hisResponse = brandonProfile.wantToSignUp(response);
     if(!hisResponse){
         var answer = "No Thanks";
     };
