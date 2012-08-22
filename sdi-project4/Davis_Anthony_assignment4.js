@@ -93,14 +93,46 @@ var myLibrary = function(){
         return formatNumber;
     };
 
+    /*
+    // Number Function: Fuzzy-match a number: is the number above or below a number within a certain percent?
+    var numFuzzyMatch = new function(numFuzzy1, numFuzzy2, numFuzzyPercent){}; */
+
+    // Number Function: Given a string version of a number such as "42", return the value as an actual Number, such as 42.
+    var convertNumStringToNum = function(numString){
+        var stringToNum = parseInt(numString);
+
+        return stringToNum;
+
+    };
+
+    // Array Function: Find the smallest value in an array that is greater than a given number
+    var findSmallVal = function(numArray, arrayVar){
+        var arrayWithValsGreaterThanArrayVar = new Array();
+        var smallestArray;
+
+        for(i=0; i<numArray.length; i++){
+            if(numArray[i] > arrayVar){
+                arrayWithValsGreaterThanArrayVar.push(numArray[i]);
+            };
+        };
+
+        arrayWithValsGreaterThanArrayVar.sort();
+        arrayWithValsGreaterThanArrayVar.pop();
+
+        return smallestArray = arrayWithValsGreaterThanArrayVar;
+    };
+
+
     // myLibrary Return key:value
     return{
-        "isURL"           : isURL,
-        "isEmail"         : isEmail,
-        "isPhoneNumber"   : isPhoneNumber,
-        "titleCaseString" : titleCaseString,
-        "stringSeparator" : stringSeparator,
-        "numFormat"       : numFormat
+        "isURL"                 : isURL,
+        "isEmail"               : isEmail,
+        "isPhoneNumber"         : isPhoneNumber,
+        "titleCaseString"       : titleCaseString,
+        "stringSeparator"       : stringSeparator,
+        "numFormat"             : numFormat,
+        "convertNumStringToNum" : convertNumStringToNum,
+        "findSmallVal"          : findSmallVal
     };
 
 };
@@ -112,6 +144,9 @@ var stringToTitleCase = "the cat ran up the cow";
 var fStringSep        = "a,b,c";
 var newStringSep      = "/";
 var number            = 19.1;
+var numString         = "42";
+var numArray          = new Array(1,4,5,9);
+var arrayVar          = 4;
 
 var myLib = new myLibrary();
 
@@ -136,5 +171,11 @@ console.log ("First String with new separator: " + newStringNewSep);
 var numWithDecimals = myLib.numFormat(number);
 console.log("Number before Format: " + number);
 console.log("Number after Format: " + numWithDecimals);
+
+var convertedNumString = myLib.convertNumStringToNum(numString);
+
+var valGreaterThan = myLib.findSmallVal(numArray,arrayVar);
+
+
 
 
