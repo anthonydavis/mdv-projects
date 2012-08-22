@@ -78,13 +78,21 @@ var myLibrary = function(){
 
     // String Function: Given a string that is a list of things separated by a given string, as well as another
         //string separator, return a string with the first separator changed to the second: "a,b,c" + "," + "/" → "a/b/c".
+    var stringSeparator = function(fStringSep, newStringSep){
+        var fStringSeparator = fStringSep.charAt(1);
+
+        var newString = fStringSep.split(fStringSeparator).join(newStringSep);
+
+        return newString;
+    };
 
     // myLibrary Return key:value
     return{
         "isURL"           : isURL,
         "isEmail"         : isEmail,
         "isPhoneNumber"   : isPhoneNumber,
-        "titleCaseString" : titleCaseString
+        "titleCaseString" : titleCaseString,
+        "stringSeparator" : stringSeparator
     };
 
 };
@@ -93,6 +101,8 @@ var phoneNumber       = "801-123-1234";
 var email             = "bob@bob.net";
 var url               = "https://www.somesite.com";
 var stringToTitleCase = "the cat ran up the cow";
+var fStringSep        = "a,b,c";
+var newStringSep         = "/";
 
 var myLib = new myLibrary();
 
@@ -108,3 +118,8 @@ console.log("Is " + url + " a valid URL: " + isValidURL);
 var titleCaseString = myLib.titleCaseString(stringToTitleCase);
 console.log("String before title Case: " + stringToTitleCase);
 console.log("String after title case: " + titleCaseString);
+
+var newStringNewSep = myLib.stringSeparator(fStringSep, newStringSep);
+console.log("First String: " + fStringSep);
+console.log("New string Separator " + newStringSep);
+console.log ("First String with new separator: " + newStringNewSep);
