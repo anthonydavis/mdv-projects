@@ -28,10 +28,10 @@ var myLibrary = function(){
         };
     };
 
-
+    // This was the first function I created with regEx so I wanted to make sure you saw I understood it.
     // String Function: Is the string a URL? (Does it start with http: or https:?)
     var isURL = function(url){
-        // local variable for the RegExp instantiated with regExp for url format.
+        // local variable for the RegExp initialized with regExp for url format.
         // format: / starts exp and ends with /
         //         ^ signals to start search at beginning of string
         //         () means a group - search for http or https
@@ -39,7 +39,7 @@ var myLibrary = function(){
         //         \/\/ then two slashes that must be escaped
         //         \S+ any single non-white space character
         //         . followed by a period which signals the domain ext used
-        //         (com|net|edu|org|mobi|ca|co|gov) search for this group, and can be any of the ext's in group.
+        //         (com|net|edu|org|mobi|gov) search for this group, and can be any of the ext's in group.
         //         $ signals end of string
         //         / is the end of the expression
 
@@ -55,22 +55,44 @@ var myLibrary = function(){
     };
 
     // String Function: Title-case a string (split into words, then uppercase the first letter of each word)
+    var titleCaseString = function(stringToTitleCase){
+        var arrayOfStrings = stringToTitleCase.split(" ");
+        var newStringArray = new Array();
+
+
+        for(i=0; i<arrayOfStrings.length; i++){
+            var tempStringWord = arrayOfStrings[i];
+            var tempStringLetter = arrayOfStrings[i][0].charAt(0);
+            var t = tempStringLetter.toLocaleUpperCase();
+
+            var wordWithCapital = tempStringWord.replace(tempStringLetter, t );
+
+            newStringArray[i] = wordWithCapital;
+
+        };
+
+        var stringWithCaps = newStringArray.join(" ");
+
+        return stringWithCaps;
+    };
 
     // String Function: Given a string that is a list of things separated by a given string, as well as another
         //string separator, return a string with the first separator changed to the second: "a,b,c" + "," + "/" → "a/b/c".
 
     // myLibrary Return key:value
     return{
-        "isURL"         : isURL,
-        "isEmail"       : isEmail,
-        "isPhoneNumber" : isPhoneNumber
+        "isURL"           : isURL,
+        "isEmail"         : isEmail,
+        "isPhoneNumber"   : isPhoneNumber,
+        "titleCaseString" : titleCaseString
     };
 
 };
 
-var phoneNumber = "111-111-1111";
-var email       = "bob@bob.net";
-var url         = "https://www.somesite.com";
+var phoneNumber       = "801-123-1234";
+var email             = "bob@bob.net";
+var url               = "https://www.somesite.com";
+var stringToTitleCase = "the cat ran up the cow";
 
 var myLib = new myLibrary();
 
@@ -82,3 +104,7 @@ console.log("Is " + email + " a valid email acccount: " + isValidEmail);
 
 var isValidURL         = myLib.isURL(url);
 console.log("Is " + url + " a valid URL: " + isValidURL);
+
+var titleCaseString = myLib.titleCaseString(stringToTitleCase);
+console.log("String before title Case: " + stringToTitleCase);
+console.log("String after title case: " + titleCaseString);
