@@ -15,8 +15,6 @@ var myLibrary = function(){
         };
     };
 
-
-
     // String Function: Does a string follow an aaa@bbb.ccc pattern like an email address?
     var isEmail = function(email){
         var re = /^[a-z]+@[a-z]+\.(com|net|edu|org|mobi|gov)$/;
@@ -51,7 +49,6 @@ var myLibrary = function(){
         }else{
             return false;
         };
-
     };
 
     // String Function: Title-case a string (split into words, then uppercase the first letter of each word)
@@ -93,9 +90,41 @@ var myLibrary = function(){
         return formatNumber;
     };
 
-    /*
+
     // Number Function: Fuzzy-match a number: is the number above or below a number within a certain percent?
-    var numFuzzyMatch = new function(numFuzzy1, numFuzzy2, numFuzzyPercent){}; */
+    var numFuzzyMatch = function(numFuzzy1, numFuzzy2){
+        var largeNum = 0;
+        var smallNum = 0;
+        var diffNum;
+        var greatLess;
+        var percentDiff;
+
+        if(numFuzzy1 < numFuzzy2){
+            largeNum = numFuzzy2;
+            smallNum = numFuzzy1;
+            greatLess = "Less";
+                if(!diffNum){
+                  diffNum = largeNum - smallNum;
+                };
+        }else{
+            largeNum = numFuzzy1;
+            smallNum = numFuzzy2;
+            greatLess = "Greater";
+            if(!diffNum){
+                diffNum = largeNum - smallNum;
+            };
+        };
+
+        percentDiff = 100 - (smallNum/largeNum * 100);
+
+        return [greatLess,percentDiff];
+
+    };
+
+    // Number Function: Find the number of hours or days difference between two dates.
+    var numDaysDifference = function(date1, date2){
+
+    };
 
     // Number Function: Given a string version of a number such as "42", return the value as an actual Number, such as 42.
     var convertNumStringToNum = function(numString){
@@ -122,6 +151,36 @@ var myLibrary = function(){
         return smallestArray = arrayWithValsGreaterThanArrayVar;
     };
 
+    // Array Function: Find the total value of just the numbers in an array, even if some of the items are not numbers.
+    var totalValOfNumArray = function(mixedArray){
+        var total = 0;
+        var arrayString = mixedArray.join(" ");
+
+        var numsInString = arrayString.match(/[0-9]+/gi);
+
+        for(i=0; i<numsInString.length; i++){
+            var x = parseInt(numsInString[i]);
+            total += x;
+        };
+
+        return total;
+    };
+    /*
+    // Array Function: Given an array of objects and the name of a key, return the array sorted by the value of that key
+    // in each of the objects: "a" + [{a:2},{a:3},{a:1}] → [{a:1},{a:2},{a:3}].
+    var sortObjectArrayByKey = function(arrayToSort){
+        var sortedArray = [];
+
+        arrayToSort.sort(function(a,b){
+          sortedArray = a.a- b.b;
+      });
+
+      return sortedArray;
+
+
+
+    }; */
+
 
     // myLibrary Return key:value
     return{
@@ -131,22 +190,56 @@ var myLibrary = function(){
         "titleCaseString"       : titleCaseString,
         "stringSeparator"       : stringSeparator,
         "numFormat"             : numFormat,
+        "numFuzzyMatch"         : numFuzzyMatch,
+        "numDaysDifference"     : numDaysDifference,
         "convertNumStringToNum" : convertNumStringToNum,
-        "findSmallVal"          : findSmallVal
+        "findSmallVal"          : findSmallVal,
+        "totalValOfNumArray"    : totalValOfNumArray
+        //"sortObjectArrayByKey"  : sortObjectArrayByKey
     };
 
 };
 
+// variable for isPhoneNumber function
 var phoneNumber       = "801-123-1234";
+
+// variable for isEmail function
 var email             = "bob@bob.net";
+
+//variable for is isURL function
 var url               = "https://www.somesite.com";
+
+// variable for titleCaseString function
 var stringToTitleCase = "the cat ran up the cow";
+
+// variables for stringSeparator function
 var fStringSep        = "a,b,c";
 var newStringSep      = "/";
+
+// variable for numFormat function
 var number            = 19.1;
+
+// variables for numFuzzyMatch function
+var numFuzzy1         = 23;
+var numFuzzy2         = 34;
+
+// Variables for numDaysDifference variables
+var date1             = 01/13/2012;
+var date2             = 03/21/2011
+
+//variable for convertNumStringToNum function
 var numString         = "42";
+
+// variable for findSmallVal function
 var numArray          = new Array(1,4,5,9);
 var arrayVar          = 4;
+
+// variable for totalValOfNumArray function
+var mixedArray        = new Array(2,"cat",45,"dog",23,"bird");
+
+// variables for sortObjectArrayByKey function
+var arrayToSort = [{key:'a',value:2}, {key:'a',value: 3},{key:'a', value:1}];
+// end of variable declarations
 
 var myLib = new myLibrary();
 
@@ -172,10 +265,25 @@ var numWithDecimals = myLib.numFormat(number);
 console.log("Number before Format: " + number);
 console.log("Number after Format: " + numWithDecimals);
 
+
+var fuzzyMatchedNumber = myLib.numFuzzyMatch(numFuzzy1,numFuzzy2);
+console.log("Number 1: " + numFuzzy1 + " is " + fuzzyMatchedNumber[0] + " Than Number 2: " + numFuzzy2);
+var percent = myLib.numFormat(fuzzyMatchedNumber[1]);
+console.log("It is " + percent + " percent (%) " + fuzzyMatchedNumber[0]);
+
+var daysDifference = myLib.numDaysDifference(date1, date2);
+console.log("There are " + daysDifference + " between date 1:" + date1 + " and Date 2: " + date2);
+
 var convertedNumString = myLib.convertNumStringToNum(numString);
 
 var valGreaterThan = myLib.findSmallVal(numArray,arrayVar);
+console.log("The smallest value in the array that is larger than " + arrayVar + " is: " + valGreaterThan);
 
+var totalSumArray = myLib.totalValOfNumArray(mixedArray);
+console.log("The sum of the elements in mixArray is: " + totalSumArray);
 
-
-
+/*
+var sortedObjectArray = myLib.sortObjectArrayByKey(arrayToSort);
+console.log("unsorted array = " + arrayToSort.toSource());
+console.log("Sorted array = " + sortedObjectArray);
+*/
