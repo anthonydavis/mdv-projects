@@ -86,13 +86,21 @@ var myLibrary = function(){
         return newString;
     };
 
+    // Number function: format a number to use a specific number of decimal places, as for money: 2.1 → 2.10
+    var numFormat = function(number){
+        var formatNumber = number.toPrecision(4);
+
+        return formatNumber;
+    };
+
     // myLibrary Return key:value
     return{
         "isURL"           : isURL,
         "isEmail"         : isEmail,
         "isPhoneNumber"   : isPhoneNumber,
         "titleCaseString" : titleCaseString,
-        "stringSeparator" : stringSeparator
+        "stringSeparator" : stringSeparator,
+        "numFormat"       : numFormat
     };
 
 };
@@ -102,7 +110,8 @@ var email             = "bob@bob.net";
 var url               = "https://www.somesite.com";
 var stringToTitleCase = "the cat ran up the cow";
 var fStringSep        = "a,b,c";
-var newStringSep         = "/";
+var newStringSep      = "/";
+var number            = 19.1;
 
 var myLib = new myLibrary();
 
@@ -123,3 +132,9 @@ var newStringNewSep = myLib.stringSeparator(fStringSep, newStringSep);
 console.log("First String: " + fStringSep);
 console.log("New string Separator " + newStringSep);
 console.log ("First String with new separator: " + newStringNewSep);
+
+var numWithDecimals = myLib.numFormat(number);
+console.log("Number before Format: " + number);
+console.log("Number after Format: " + numWithDecimals);
+
+
