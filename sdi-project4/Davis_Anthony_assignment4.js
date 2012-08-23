@@ -179,21 +179,15 @@ var myLibrary = function(){
 
         return total;
     };
-    /*
+
     // Array Function: Given an array of objects and the name of a key, return the array sorted by the value of that key
     // in each of the objects: "a" + [{a:2},{a:3},{a:1}] → [{a:1},{a:2},{a:3}].
     var sortObjectArrayByKey = function(arrayToSort){
-        var sortedArray = [];
-
-        arrayToSort.sort(function(a,b){
-          sortedArray = a.a- b.b;
-      });
-
-      return sortedArray;
-
-
-
-    }; */
+        var sorted = arrayToSort.sort(function(a,b){
+            return a.value - b.value;
+        });
+        return sorted;
+    };
 
 
     // myLibrary Return key:value
@@ -208,8 +202,8 @@ var myLibrary = function(){
         "numDaysDifference"     : numDaysDifference,
         "convertNumStringToNum" : convertNumStringToNum,
         "findSmallVal"          : findSmallVal,
-        "totalValOfNumArray"    : totalValOfNumArray
-        //"sortObjectArrayByKey"  : sortObjectArrayByKey
+        "totalValOfNumArray"    : totalValOfNumArray,
+        "sortObjectArrayByKey"  : sortObjectArrayByKey
     };
 
 };
@@ -251,8 +245,17 @@ var arrayVar          = 4;
 // variable for totalValOfNumArray function
 var mixedArray        = new Array(2,"cat",45,"dog",23,"bird");
 
-// variables for sortObjectArrayByKey function
-var arrayToSort = [{key:'a',value:2}, {key:'a',value: 3},{key:'a', value:1}];
+// variables for sortObjectArray function
+var arrayToSort = []
+    arrayToSort[0] = {key:"a", value:"2"}
+    arrayToSort[1] = {key:"a", value:"3"}
+    arrayToSort[2] = {key:"a", value:"1"}
+
+var unsortedArray = []
+unsortedArray[0] = {key:"a", value:"2"}
+unsortedArray[1] = {key:"a", value:"3"}
+unsortedArray[2] = {key:"a", value:"1"}
+
 // end of variable declarations
 
 var myLib = new myLibrary();
@@ -296,8 +299,6 @@ console.log("The smallest value in the array that is larger than " + arrayVar + 
 var totalSumArray = myLib.totalValOfNumArray(mixedArray);
 console.log("The sum of the elements in mixArray is: " + totalSumArray);
 
-/*
 var sortedObjectArray = myLib.sortObjectArrayByKey(arrayToSort);
-console.log("unsorted array = " + arrayToSort.toSource());
-console.log("Sorted array = " + sortedObjectArray);
-*/
+console.log("unsorted array = " + unsortedArray.toSource());
+console.log("Sorted array = " + sortedObjectArray.toSource());
