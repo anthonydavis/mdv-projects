@@ -123,6 +123,20 @@ var myLibrary = function(){
 
     // Number Function: Find the number of hours or days difference between two dates.
     var numDaysDifference = function(date1, date2){
+        var a = new Date(date1);
+        var b = new Date(date2);
+
+        var seconds = Math.round((a-b)/1000);
+        var minutes = Math.round((seconds)/60);
+        var hours   = Math.round((minutes)/60);
+        var days    = Math.round((hours)/24);
+        var years   = Math.round((days)/365);
+
+        var daysMinusYears = days - (years * 365);
+
+
+
+        return [years, daysMinusYears];
 
     };
 
@@ -224,8 +238,8 @@ var numFuzzy1         = 23;
 var numFuzzy2         = 34;
 
 // Variables for numDaysDifference variables
-var date1             = 01/13/2012;
-var date2             = 03/21/2011
+var date1             = "2011,3,23";
+var date2             = "2001,3,22";
 
 //variable for convertNumStringToNum function
 var numString         = "42";
@@ -272,7 +286,7 @@ var percent = myLib.numFormat(fuzzyMatchedNumber[1]);
 console.log("It is " + percent + " percent (%) " + fuzzyMatchedNumber[0]);
 
 var daysDifference = myLib.numDaysDifference(date1, date2);
-console.log("There are " + daysDifference + " between date 1:" + date1 + " and Date 2: " + date2);
+console.log("There are " + daysDifference[0] + " years " + "and " + daysDifference[1] + " days between date 1:" + date1 + " and Date 2: " + date2);
 
 var convertedNumString = myLib.convertNumStringToNum(numString);
 
