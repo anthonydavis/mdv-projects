@@ -5,10 +5,13 @@
 var myLibrary = function(){
 
     // String Function: Does a string follow a 123-456-7890 pattern like a phone number?
-    var isPhoneNumber = function(number){
+    var isPhoneNumber = function(phoneNumber){
         var re = /^(\d{3})-(\d{3})-(\d{4})$/;
 
-        if(re.test(number)){
+        // MAKEUP: Conditional, deliverable 3
+        if(re.test(phoneNumber)){
+
+            // MAKEUP: Return Boolean, deliverable 3
             return true;
         }else{
             return false;
@@ -29,6 +32,10 @@ var myLibrary = function(){
     // This was the first function I created with regEx so I wanted to make sure you saw I understood it.
     // String Function: Is the string a URL? (Does it start with http: or https:?)
     var isURL = function(url){
+
+        // MAKEUP: Property: Boolean
+        var result = false;
+
         // local variable for the RegExp initialized with regExp for url format.
         // format: / starts exp and ends with /
         //         ^ signals to start search at beginning of string
@@ -44,7 +51,9 @@ var myLibrary = function(){
         var re = /^(http|https):\/\/\S+.(com|net|edu|org|mobi|gov)$/;
 
         // check to see if the regExp matches the url argument passed to the function
-        if(re.test(url)){
+
+        result = re.test(url);
+        if(result){
             return true;
         }else{
             return false;
@@ -52,16 +61,20 @@ var myLibrary = function(){
     };
 
     // String Function: Title-case a string (split into words, then uppercase the first letter of each word)
+    // MAKEUP: Argument: String deliverable 3
     var titleCaseString = function(stringToTitleCase){
         var arrayOfStrings = stringToTitleCase.split(" ");
+
+        // MAKEUP: Property: Array deliverable 3
         var newStringArray = new Array();
 
-
+        // MAKEUP: For Loop, deliverable 3
         for(i=0; i<arrayOfStrings.length; i++){
             var tempStringWord = arrayOfStrings[i];
             var tempStringLetter = arrayOfStrings[i][0].charAt(0);
             var t = tempStringLetter.toLocaleUpperCase();
 
+            // MAKEUP: Property: String deliverable 3
             var wordWithCapital = tempStringWord.replace(tempStringLetter, t );
 
             newStringArray[i] = wordWithCapital;
@@ -70,6 +83,7 @@ var myLibrary = function(){
 
         var stringWithCaps = newStringArray.join(" ");
 
+        // MAKEUP: Return Value, deliverable 3
         return stringWithCaps;
     };
 
@@ -80,10 +94,12 @@ var myLibrary = function(){
 
         var newString = fStringSep.split(fStringSeparator).join(newStringSep);
 
+        // MAKEUP: Return String, deliverable 3
         return newString;
     };
 
     // Number function: format a number to use a specific number of decimal places, as for money: 2.1 → 2.10
+    // MAKEUP: Argument: Number deliverable 3
     var numFormat = function(number){
         var formatNumber = number.toPrecision(4);
 
@@ -93,6 +109,8 @@ var myLibrary = function(){
 
     // Number Function: Fuzzy-match a number: is the number above or below a number within a certain percent?
     var numFuzzyMatch = function(numFuzzy1, numFuzzy2){
+
+        // MAKEUP: Property: Number deliverable 3
         var largeNum = 0;
         var smallNum = 0;
         var diffNum;
@@ -103,6 +121,8 @@ var myLibrary = function(){
             largeNum = numFuzzy2;
             smallNum = numFuzzy1;
             greatLess = "Less";
+
+            // MAKEUP: Nested conditional, deliverable 3
                 if(!diffNum){
                   diffNum = largeNum - smallNum;
                 };
@@ -117,6 +137,7 @@ var myLibrary = function(){
 
         percentDiff = 100 - (smallNum/largeNum * 100);
 
+        // MAKEUP: Return Array, deliverable 3
         return [greatLess,percentDiff];
 
     };
@@ -126,6 +147,7 @@ var myLibrary = function(){
         var a = new Date(date1);
         var b = new Date(date2);
 
+        // MAKEUP: Math, deliverable 3
         var seconds = Math.round((a-b)/1000);
         var minutes = Math.round((seconds)/60);
         var hours   = Math.round((minutes)/60);
@@ -166,6 +188,7 @@ var myLibrary = function(){
     };
 
     // Array Function: Find the total value of just the numbers in an array, even if some of the items are not numbers.
+    // MAKEUP: Argument: Array, deliverable 3
     var totalValOfNumArray = function(mixedArray){
         var total = 0;
         var arrayString = mixedArray.join(" ");
@@ -177,20 +200,23 @@ var myLibrary = function(){
             total += x;
         };
 
+        // MAKEUP: Return Number, deliverable 3
         return total;
     };
 
     // Array Function: Given an array of objects and the name of a key, return the array sorted by the value of that key
     // in each of the objects: "a" + [{a:2},{a:3},{a:1}] → [{a:1},{a:2},{a:3}].
+    // MAKEUP: Argument: Object deliverable 3
     var sortObjectArrayByKey = function(arrayToSort){
         var sorted = arrayToSort.sort(function(a,b){
-            return a.value - b.value;
+            return a.a - b.a;
         });
         return sorted;
     };
 
 
     // myLibrary Return key:value
+    // MAKEUP: Return Object, deliverable 3
     return{
         "isURL"                 : isURL,
         "isEmail"               : isEmail,
@@ -247,14 +273,14 @@ var mixedArray        = new Array(2,"cat",45,"dog",23,"bird");
 
 // variables for sortObjectArray function
 var arrayToSort = []
-    arrayToSort[0] = {key:"a", value:"2"}
-    arrayToSort[1] = {key:"a", value:"3"}
-    arrayToSort[2] = {key:"a", value:"1"}
+    arrayToSort[0] = {"a":"2"}
+    arrayToSort[1] = {"a":"3"}
+    arrayToSort[2] = {"a":"1"}
 
 var unsortedArray = []
-unsortedArray[0] = {key:"a", value:"2"}
-unsortedArray[1] = {key:"a", value:"3"}
-unsortedArray[2] = {key:"a", value:"1"}
+unsortedArray[0] = {"a":"2"}
+unsortedArray[1] = {"a":"3"}
+unsortedArray[2] = {"a":"1"}
 
 // end of variable declarations
 
