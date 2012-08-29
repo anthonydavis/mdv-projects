@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Name: Anthony Davis
+     Class: VFW
      Term: 1209
      Project: Web App Part 1
 -->
@@ -12,20 +13,50 @@
         <meta name="robots"      content="index, follow" />
         <meta name="robots"      content="noindex, nofollow" />
         <meta name="viewport"    content="user-scalable=no width=device-width" />
-        <title>My Record Collection Mobile Application</title>
+        <title>Digi Records List Application - Add a Record</title>
     </head>
     <body>
-        <div id="container">
-            <div id="header">
+        <div id="container"> <!-- begin Main container -->
+            <div id="header"> <!-- begin header container -->
+                <header>
+                    <section>
+                        <h1>Digi Records List</h1>
+                    </section>
+                </header>
+            </div> <!-- end header container -->
+            <div id="body"> <!-- begin body container -->
+                <header>
+                    <section>
+                        <h2>Add a Record</h2>
+                    </section>
+                </header>
                 <section>
-                    <header>
-                        <hgroup>
-                            <h1>App Name:</h1>
-                            <h2>Digi Records List</h2>dwadwaad
-                        </hgroup>
-                    </header>
+                    <form action="#" method="post"> <!-- form for adding record to list -->
+                        <fieldset>
+                            <legend>Record Information</legend>
+                            <ui>
+                                <li><label for="dateAdded">Date added to list:</label><input type="date" id="dateAdded" required /></li>
+                                <li><label for="category">Music Category:</label>
+                                    <select id="category">
+                                        <optgroup label="Music Category">
+                                            <option value="80s">80's</option>
+                                            <option value="classical">Classical</option>
+                                            <option value="country">Country</option>
+                                            <option value="Metal">Metal</option>
+                                            <option value="rap">Rap</option>
+                                            <option value="Rock">Rock</option>
+                                        </optgroup>
+                                    </select>
+                                </li>
+                                <li><label for="artistName">Artist Name:</label><input type="text" id="artistName" required /></li>
+                                <li><label for="albumTitle">Album Title:</label><input type="text" id="albumTitle" required /></li>
+                                <li><label for="numCopies">Number of Copies:</label><input type="range" min="0" max="10"/></li>
+                            </ui>
+                        </fieldset>
+                        <input type="submit" Value="Add To List" />
+                    </form> <!-- Close Form
                 </section>
-            </div>
-        </div>
+            </div> <!-- end body container -->
+        </div> <!-- end Main container -->
     </body>
 </html>
