@@ -31,7 +31,7 @@
                     </section>
                 </header>
                 <section>
-                    <form action="#" method="post"> <!-- form for adding record to list -->
+                    <form action="#" method="post" id="newRecord"> <!-- form for adding record to list -->
                         <fieldset>
                             <legend>Record Information</legend>
                             <ui>
@@ -50,9 +50,20 @@
                                 </li>
                                 <li><label for="artistName">Artist Name:</label><input type="text" id="artistName" required /></li>
                                 <li><label for="albumTitle">Album Title:</label><input type="text" id="albumTitle" required /></li>
-                                <li><label for="numCopies">Number of Copies:</label><input type="range" min="0" max="10"/></li>
+                                <li><label for="numCopies">Number of Copies:</label><input type="range" id="numCopies" min="0" max="10"/></li>
+                                <li>Condition of Record:
+                                    <ui>
+                                        <li>
+                                            <input type="radio" value="Good" id="good" name="condition" /><label for="good">Good</label>
+                                            <input type="radio" value="Ok" id="ok" name="condition" /><label for="ok">Ok</label>
+                                            <input type="radio" value="Bad" id="bad" name="condition" /><label for="bad">Bad</label>
+                                        </li>
+                                    </ui>
+                                </li>
+                                <label for="notes">Notes:</label><br /><textarea id="notes"></textarea>
                             </ui>
                         </fieldset>
+                        <input type="hidden" name="formId" value="newRecord">
                         <input type="submit" Value="Add To List" />
                     </form> <!-- Close Form
                 </section>
