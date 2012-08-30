@@ -11,7 +11,6 @@
         <meta name="description" content="Record collection tracking App" />
         <meta name="keywords"    content="Record Collection, Record Collection Tracking, Mobile App, Mobile, App" />
         <meta name="robots"      content="index, follow" />
-        <meta name="robots"      content="noindex, nofollow" />
         <meta name="viewport"    content="user-scalable=no width=device-width" />
         <title>Digi Records List Application - Add a Record</title>
     </head>
@@ -34,7 +33,7 @@
                     <form action="#" method="post" id="newRecord"> <!-- form for adding record to list -->
                         <fieldset>
                             <legend>Record Information</legend>
-                            <ui>
+                            <ul>
                                 <li><label for="dateAdded">Date added to list:</label><input type="date" id="dateAdded" required /></li>
                                 <li><label for="category">Music Category:</label>
                                     <select id="category">
@@ -52,22 +51,29 @@
                                 <li><label for="albumTitle">Album Title:</label><input type="text" id="albumTitle" required /></li>
                                 <li><label for="numCopies">Number of Copies:</label><input type="range" id="numCopies" min="0" max="10"/></li>
                                 <li>Condition of Record:
-                                    <ui>
+                                    <ul>
                                         <li>
                                             <input type="radio" value="Good" id="good" name="condition" /><label for="good">Good</label>
                                             <input type="radio" value="Ok" id="ok" name="condition" /><label for="ok">Ok</label>
                                             <input type="radio" value="Bad" id="bad" name="condition" /><label for="bad">Bad</label>
                                         </li>
-                                    </ui>
+                                    </ul>
                                 </li>
                                 <label for="notes">Notes:</label><br /><textarea id="notes"></textarea>
-                            </ui>
+                            </ul>
                         </fieldset>
                         <input type="hidden" name="formId" value="newRecord">
                         <input type="submit" Value="Add To List" />
-                    </form> <!-- Close Form
+                    </form> <!-- Close Form -->
                 </section>
             </div> <!-- end body container -->
+            <div id="footer">
+                <section>
+                    <footer>
+                        <a href="#">Clear Stored Data</a> | <a href="#">Display Data</a>
+                    </footer>
+                </section>
+            </div>
         </div> <!-- end Main container -->
     </body>
 </html>
