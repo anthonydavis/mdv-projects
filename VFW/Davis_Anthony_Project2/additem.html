@@ -2,7 +2,7 @@
 <!-- Name: Anthony Davis
      Class: VFW
      Term: 1209
-     Project: Web App Part 1
+     Project: Web App Part 2
 -->
 
 <html>
@@ -35,7 +35,6 @@
                         <fieldset>
                             <legend>Record Information</legend>
                             <ul>
-                                <li><label for="dateAdded">Date added to list:</label><input type="date" id="dateAdded" required /></li>
                                 <li><label for="category">Music Category:</label>
                                     <select id="category">
                                         <optgroup label="Music Category">
@@ -48,6 +47,7 @@
                                         </optgroup>
                                     </select>
                                 </li>
+                                <li><label for="dateAdded">Date added to list:</label><input type="date" id="dateAdded" required /></li>
                                 <li><label for="artistName">Artist Name:</label><input type="text" id="artistName" required /></li>
                                 <li><label for="albumTitle">Album Title:</label><input type="text" id="albumTitle" required /></li>
                                 <li><label for="numCopies">Number of Copies:</label><input type="range" id="numCopies" min="0" max="10"/></li>
@@ -64,14 +64,14 @@
                             </ul>
                         </fieldset>
                         <input type="hidden" name="formId" value="newRecord">
-                        <input type="submit" class="btn" Value="Add To List" />
+                        <input type="submit" class="btn" Value="Save Record" id="submitButton" />
                     </form> <!-- Close Form -->
                 </section>
             </div> <!-- end body container -->
             <div id="addFooter">
                 <section>
                     <footer>
-                        <a href="#">Clear Stored Data</a> | <a href="#">Display Data</a>
+                        <a href="#" id="clearLink">Clear Stored Data</a> | <a href="#" id="displayLink">Display Data</a>
                     </footer>
                 </section>
             </div>
