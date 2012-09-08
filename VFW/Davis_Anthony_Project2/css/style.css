@@ -38,20 +38,21 @@ Project 2
 }
 
 #addBody{
+    height: 100%;
     font-family: sans-serif; font-size: 13px; color: #445668; text-shadow: 0px -1px 0px #334f71;
-    overflow: scroll;  
+    overflow: scroll;
 
 }
 
 #newRecord{
-    position: fixed;
-    top: 95px;
+   position: relative;
+   top: -25px;
 
 }
 
 #addFooter{
-    position: fixed;
-    top: 400px;
+    position: relative;
+    text-align: center;
 }
 
 body, div, h1, form, fieldset, input, textarea {
@@ -62,7 +63,6 @@ body{
     background: #728eaa;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C), color-stop(100%,#728EAA));
     padding: 20px;
-    height: 317px;
     font-family: sans-serif;
 }
 
@@ -78,6 +78,24 @@ h2{
 
 input{
     display: block;
+    padding: 2px;
+    background: #728eaa;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C), color-stop(100%,#728EAA));
+    color: #e1e1e1;
+    font-size: 13px;
+}
+
+textarea{
+    background: #728eaa;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C), color-stop(100%,#728EAA));
+    color: #e1e1e1;
+    font-size: 13px;
+}
+
+input.btn{
+    position: relative;
+    left: 90px;
+    margin-top: 5px;
 }
 
 fieldset{
