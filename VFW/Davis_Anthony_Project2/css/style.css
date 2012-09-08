@@ -91,6 +91,7 @@ textarea{
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C), color-stop(100%,#728EAA));
     color: #e1e1e1;
     font-size: 13px;
+
 }
 
 input.btn{

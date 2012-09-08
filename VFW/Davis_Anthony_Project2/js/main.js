@@ -32,24 +32,29 @@ window.addEventListener("DOMContentLoaded", function(){
             makeSelect.appendChild(makeOption);
         }
         selectLi.appendChild(makeSelect);
-
     }
+
+    function storeData(){
+        
+    }
+
+
 
     // Variable defaults
     var musicCategory = ["--Choose A style Category--", "80\'s", "Classical", "Country", "Metal", "Rap", "Rock"];
     makeCats();
 
     // Set Link & Submit Click Events
+
+    /*
     var displayLink = $("displayLink");
     displayLink.addEventListener("click", getData);
 
     var clearLink = $("clearLink");
-    clearLink.addEventListener("click", clearData);
+    clearLink.addEventListener("click", clearData); */
 
     var submitButton = $("submitButton");
     submitButton.addEventListener("click", storeData);
-
-
 
 
 });
