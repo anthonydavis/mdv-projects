@@ -1,9 +1,4 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- Name: Anthony Davis
-     Class: VFW
-     Term: 1209
-     Project: Web App Part 2
--->
 
 <html>
     <head>
@@ -35,18 +30,7 @@
                         <fieldset>
                             <legend>Record Information</legend>
                             <ul>
-                                <li><label for="category">Music Category:</label>
-                                    <select id="category">
-                                        <optgroup label="Music Category">
-                                            <option value="80s">80's</option>
-                                            <option value="classical">Classical</option>
-                                            <option value="country">Country</option>
-                                            <option value="Metal">Metal</option>
-                                            <option value="rap">Rap</option>
-                                            <option value="Rock">Rock</option>
-                                        </optgroup>
-                                    </select>
-                                </li>
+                                <li id="select"><label>Music Category:</label></li>
                                 <li><label for="dateAdded">Date added to list:</label><input type="date" id="dateAdded" required /></li>
                                 <li><label for="artistName">Artist Name:</label><input type="text" id="artistName" required /></li>
                                 <li><label for="albumTitle">Album Title:</label><input type="text" id="albumTitle" required /></li>
@@ -76,5 +60,6 @@
                 </section>
             </div>
         </div> <!-- end Main container -->
+        <script src="js/main.js" type="text/javascript"></script>
     </body>
 </html>
