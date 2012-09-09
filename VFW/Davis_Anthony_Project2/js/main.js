@@ -65,15 +65,50 @@ window.addEventListener("DOMContentLoaded", function(){
         alert("Record Added to List");
     }
 
+    function toggleControls(n){
+        switch(n){
+            case "on":
+                $("newRecord").style.display = "none";
+                $("clearLink").style.display = "inline";
+                $("displayLink").style.display = "none";
+                $("addNewLink").style.display =  "inline";
+                $("h2Id").innerText = "Current Records in List";
 
+                break;
+            case "off":
+                $("newRecord").style.display = "block";
+                $("clearLink").style.display = "inline";
+                $("displayLink").style.display = "inline";
+                $("addNewLink").style.display =  "none";
+                $("items").style.display = "none";
+                break;
+            default:
+                return false;
+        }
+    }
 
     // Write data from local storage to the browser
     function getData(){
+
+        if(localStorage.length ===0){
+            alert("There is No Data To Display");
+            return false;
+        }
+
+        toggleControls("on");
+
+        if(localStorage.length ===0){
+            alert("There is No Data To Display");
+        }
+
         var makeDiv = document.createElement("div");
         makeDiv.setAttribute("id", "items");
         var makeList = document.createElement("ul");
+        var appendDiv = document.getElementById("addBody");
         makeDiv.appendChild(makeList);
-        document.body.appendChild(makeDiv);
+        // document.body.appendChild(makeDiv);
+        appendDiv.appendChild(makeDiv);
+        $("items").style.display = "block";
 
         for(var i= 0, j=localStorage.length; i<j; i++){
             var makeLi = document.createElement("li");
@@ -98,6 +133,17 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     }
 
+    function clearData(){
+        if(localStorage.length === 0){
+            alert("No Data to Clear");
+        }else{
+            localStorage.clear();
+            alert("All Contents Have Been Deleted");
+            window.location.reload();
+            return false;
+        }
+    }
+
     // Variable defaults
     var musicCategory = ["--Choose A style Category--", "80\'s", "Classical", "Country", "Metal", "Rap", "Rock"];
     var conditionValue;
@@ -109,8 +155,8 @@ window.addEventListener("DOMContentLoaded", function(){
     var displayLink = $("displayLink");
     displayLink.addEventListener("click", getData);
 
-    /*var clearLink = $("clearLink");
-    clearLink.addEventListener("click", clearData);*/
+    var clearLink = $("clearLink");
+    clearLink.addEventListener("click", clearData);
 
     var submitButton = $("submitButton");
     submitButton.addEventListener("click", storeData);
