@@ -29,11 +29,13 @@
                     <form action="#" method="post" id="newRecord"> <!-- form for adding record to list -->
                         <fieldset>
                             <legend>Record Information</legend>
-                            <ul>
-                                <li id="select"><label>Music Category:</label></li>
-                                <li><label for="dateAdded">Date added to list:</label><input type="date" id="dateAdded" required /></li>
-                                <li><label for="artistName">Artist Name:</label><input type="text" id="artistName" required /></li>
-                                <li><label for="albumTitle">Album Title:</label><input type="text" id="albumTitle" required /></li>
+                            <span id="errorMsg">* fields are required.</span>
+                            <ul id="errors"></ul>
+                            <ul id="questions">
+                                <li id="select"><label> * Music Category:</label></li>
+                                <li><label for="dateAdded">* Date added to list:</label><input type="date" id="dateAdded" required /></li>
+                                <li><label for="artistName">* Artist Name:</label><input type="text" id="artistName" required /></li>
+                                <li><label for="albumTitle">* Album Title:</label><input type="text" id="albumTitle" required /></li>
                                 <li><label for="numCopies">Number of Copies:</label><input type="range" id="numCopies" min="0" max="10"/></li>
                                 <li>Condition of Record:
                                     <ul>
@@ -56,7 +58,7 @@
                 <section>
                     <footer>
                         <nav>
-                            <a href="#" id="clearLink">Clear Stored Data</a> | <a href="#" id="displayLink">Display Data</a> | <a href="additem.html" id="addNewLink" style="display: none">Add New Record</a>
+                            <a href="#" id="clearLink">Clear Stored Data</a> | <a href="#" id="displayLink">Display Data</a>  <a href="additem.html" id="addNewLink" style="display: none">Add New Record</a>
                         </nav>
                     </footer>
                 </section>

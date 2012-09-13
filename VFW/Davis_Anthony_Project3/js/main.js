@@ -45,8 +45,12 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    function storeData(){
-        var id  = Math.floor(Math.random()*100000001);
+    function storeData(key){
+        if(!key){
+            var id  = Math.floor(Math.random()*100000001);
+        }else{
+            id = key;
+        }
 
         getSelectedRadio();
         // Gather form field data and store in an object
@@ -193,7 +197,17 @@ window.addEventListener("DOMContentLoaded", function(){
         }
 
         $("notes").value    = item.notes[1];
-        }
+
+        // remove the initial listener from the input 'save record' button
+        submitButton.removeEventListener("click", storeData);
+
+        //change submit button value to say edit button
+        $('submitButton').value = "Save Changes";
+
+        var editSubmit = $('submitButton');
+        editSubmit.addEventListener("click", validate);
+        editSubmit.key = this.key;
+    }
 
     function clearData(){
         if(localStorage.length === 0){
@@ -206,13 +220,71 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     }
 
+    // validate form fields
+    function validate(e){
+        // Define the elements we want to check
+        var getCategory     = $('category');
+        var getDateAdded    = $("dateAdded");
+        var getArtistName   = $("artistName");
+        var getAlbumTitle   = $("albumTitle");
+
+        // reset error msgs
+        errorMsg.innerHTML = "";
+        getCategory.style.border = "1px solid black";
+        getDateAdded.style.border = "1px solid black";
+        getArtistName.style.border = "1px solid black";
+        getAlbumTitle.style.border = "1px solid black";
+
+        // Get error Msgs
+        var messageAry = [];
+
+        // Category validation
+        if(getCategory.value === "-- Choose A Style Category --"){
+            var categoryError = "Please pick a music category";
+            getCategory.style.border = "1px solid red";
+            messageAry.push(categoryError);
+        }
+
+        if(getDateAdded.value === ""){
+            var dateAddedError = "Please choose date added";
+            getDateAdded.style.border = "1px solid red";
+            messageAry.push(dateAddedError);
+        }
+
+        if(getArtistName.value === ""){
+            var artistNameError = "Please add the artists name";
+            getArtistName.style.border = "1px solid red";
+            messageAry.push(artistNameError)
+        }
+
+        if(getAlbumTitle.value === ""){
+            var albumTitleError = "Please add the album title";
+            getAlbumTitle.style.border = "1px solid red";
+            messageAry.push(albumTitleError);
+        }
+
+        if(messageAry.length >= 1){
+            for(var i = 0, j=messageAry.length; i<j; i++){
+                var text = document.createElement('li');
+                text.innerHTML = messageAry[i];
+                 errorMsg.appendChild(text);
+                e.preventDefault()
+                return false;
+            }
+        }else{
+            storeData(this.key);
+        }
+
+    }
+
     // Variable defaults
-    var musicCategory = ["--Choose A style Category--", "80\'s", "Classical", "Country", "Metal", "Rap", "Rock"];
+    var musicCategory = ["-- Choose A Style Category --", "80\'s", "Classical", "Country", "Metal", "Rap", "Rock"];
     var conditionValue;
     makeCats();
 
     // Set Link & Submit Click Events
 
+    var errorMsg = $('errors');
 
     var displayLink = $("displayLink");
     displayLink.addEventListener("click", getData);
@@ -221,6 +293,6 @@ window.addEventListener("DOMContentLoaded", function(){
     clearLink.addEventListener("click", clearData);
 
     var submitButton = $("submitButton");
-    submitButton.addEventListener("click", storeData);
+    submitButton.addEventListener("click", validate);
 });
 
