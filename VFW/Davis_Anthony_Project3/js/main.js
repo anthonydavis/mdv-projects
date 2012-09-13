@@ -162,7 +162,7 @@ window.addEventListener("DOMContentLoaded", function(){
         deleteLink.href = "#";
         deleteLink.key = key;
         var deleteText = "Delete Record Entry";
-       // deleteLink.addEventListener("click", deleteItem);
+        deleteLink.addEventListener("click", deleteItem);
         deleteLink.innerHTML = deleteText;
         linksLi.appendChild(deleteLink);
 
@@ -275,6 +275,17 @@ window.addEventListener("DOMContentLoaded", function(){
             storeData(this.key);
         }
 
+    }
+
+    function deleteItem(){
+        var ask = confirm("Are you sure you want to delete this record entry?");
+        if(ask){
+            localStorage.removeItem(this.key);
+            alert("Contact was deleted");
+            window.location.reload();
+        }else{
+            alert("Contact was NOT deleted");
+        }
     }
 
     // Variable defaults
