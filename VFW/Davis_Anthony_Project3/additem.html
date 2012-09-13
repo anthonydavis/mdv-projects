@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Record collection tracking App" />
+        <meta name="keywords"    content="Record Collection, Record Collection Tracking, Mobile App, Mobile, App" />
+        <meta name="robots"      content="index, follow" />
+        <meta name="viewport"    content="user-scalable=no width=device-width" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <title>Digi Record List Application - Add a Record</title>
+    </head>
+    <body>
+        <div id="addContainer"> <!-- begin Main container -->
+            <div id="addHeader"> <!-- begin header container -->
+                <header>
+                    <section>
+                        <h1>Digi Records List</h1>
+                    </section>
+                </header>
+            </div> <!-- end header container -->
+            <div id="addBody"> <!-- begin body container -->
+                <header>
+                    <section>
+                        <h2 id="h2Id">Add a Record</h2>
+                    </section>
+                </header>
+                <section>
+                    <form action="#" method="post" id="newRecord"> <!-- form for adding record to list -->
+                        <fieldset>
+                            <legend>Record Information</legend>
+                            <ul>
+                                <li id="select"><label>Music Category:</label></li>
+                                <li><label for="dateAdded">Date added to list:</label><input type="date" id="dateAdded" required /></li>
+                                <li><label for="artistName">Artist Name:</label><input type="text" id="artistName" required /></li>
+                                <li><label for="albumTitle">Album Title:</label><input type="text" id="albumTitle" required /></li>
+                                <li><label for="numCopies">Number of Copies:</label><input type="range" id="numCopies" min="0" max="10"/></li>
+                                <li>Condition of Record:
+                                    <ul>
+                                        <li>
+                                            <input type="radio" value="Good" id="good" name="condition" /><label for="good">Good</label>
+                                            <input type="radio" value="Ok" id="ok" name="condition" /><label for="ok">Ok</label>
+                                            <input type="radio" value="Bad" id="bad" name="condition" /><label for="bad">Bad</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <label for="notes">Notes:</label><br /><textarea id="notes"></textarea>
+                            </ul>
+                        </fieldset>
+                        <input type="hidden" name="formId" value="newRecord">
+                        <input type="submit" class="btn" Value="Save Record" id="submitButton" />
+                    </form> <!-- Close Form -->
+                </section>
+            </div> <!-- end body container -->
+            <div id="addFooter">
+                <section>
+                    <footer>
+                        <nav>
+                            <a href="#" id="clearLink">Clear Stored Data</a> | <a href="#" id="displayLink">Display Data</a> | <a href="additem.html" id="addNewLink" style="display: none">Add New Record</a>
+                        </nav>
+                    </footer>
+                </section>
+            </div>
+        </div> <!-- end Main container -->
+        <script src="js/main.js" type="text/javascript"></script>
+    </body>
+</html>
