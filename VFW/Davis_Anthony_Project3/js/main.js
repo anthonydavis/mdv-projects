@@ -3,7 +3,7 @@
  * Name: Anthony Davis
  * Class: VFW
  * Term: 1209
- * Project: Web App Part 2
+ * Project: Web App Part 3
  *
  **/
 
@@ -111,7 +111,8 @@ window.addEventListener("DOMContentLoaded", function(){
         $("items").style.display = "block";
 
         for(var i= 0, j=localStorage.length; i<j; i++){
-            var makeLi = document.createElement("li");
+            var makeLi       = document.createElement("li");
+            var linksLi      = document.createElement("li");
             makeList.appendChild(makeLi);
             var key         = localStorage.key(i);
             var value       = localStorage.getItem(key);
@@ -129,9 +130,70 @@ window.addEventListener("DOMContentLoaded", function(){
                 makeSubList.appendChild(makeSubLi);
                 var optSubText = obj[n][0] + " " + obj[n][1];
                 makeSubLi.innerHTML = optSubText;
+                makeSubLi.appendChild(linksLi);
+
             }
+            makeItemLinks(localStorage.key(i), linksLi); // Create edit and delete buttons/link for each item in local storage
         }
     }
+
+    // Make Item Links
+    // Create the edit and delete links for each stored item when displayed
+    function makeItemLinks(key, linksLi){
+    // add edit single item link
+        var editLink = document.createElement("a");
+        editLink.href = "#";
+        editLink.key = key;
+        var editText = "Edit Record Entry";
+        editLink.addEventListener("click", editItem);
+        editLink.innerHTML = editText;
+        linksLi.appendChild(editLink);
+
+        // add a line break
+        var breakTag = document.createElement("br");
+        linksLi.appendChild(breakTag);
+
+    // add delete single item link
+        var deleteLink = document.createElement("a");
+        deleteLink.href = "#";
+        deleteLink.key = key;
+        var deleteText = "Delete Record Entry";
+       // deleteLink.addEventListener("click", deleteItem);
+        deleteLink.innerHTML = deleteText;
+        linksLi.appendChild(deleteLink);
+
+    }
+
+    // EditItem function
+    function editItem(){
+        // grab the data from local storage
+        var value = localStorage.getItem(this.key);
+        var item = JSON.parse(value);
+
+        // show form so we can edit item
+        toggleControls("off");
+
+        // populate form fields with current local storage values
+        $('category').value     = item.category[1];
+        $("dateAdded").value    = item.dateAdded[1];
+        $("artistName").value   = item.artistName[1];
+        $("albumTitle").value   = item.albumTitle[1];
+        $("numCopies").value    = item.numCopies[1];
+        var radios              = document.forms[0].condition;
+
+
+        for(var i=0; i<radios.length; i++){
+            if(radios[i].value == "Good" && item.condition[1] == "Good" ){
+                radios[i].setAttribute("checked", "checked");
+            }else if(radios[i].value == "Ok" && item.condition[1] == "Ok"){
+                radios[i].setAttribute("checked", "checked");
+            } else if(radios[i].value == "Bad" && item.condition[1]== "Bad"){
+                radios[i].setAttribute("checked", "checked");
+            }
+        }
+
+        $("notes").value    = item.notes[1];
+        }
 
     function clearData(){
         if(localStorage.length === 0){
