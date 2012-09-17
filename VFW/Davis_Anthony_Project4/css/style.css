@@ -1,0 +1,122 @@
+/**
+ *
+ * Name: Anthony Davis
+ * Class: VFW
+ * Term: 1209
+ * Project: Web App Part 4
+ *
+ **/
+
+#iContainer {
+    height: 305px;
+    padding: 10px;
+    background: #c9d0de; border: 1px solid #e1e1e1;
+}
+
+#iBody{
+    font-family: sans-serif; font-size: 13px; color: #445668; text-shadow: 0px -1px 0px #334f71;
+    text-align: center;
+}
+
+#iFooter{
+    font-family: sans-serif; font-size: 13px; color: #445668; text-transform: uppercase; text-shadow: 0px -1px 0px #334f71;
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+}
+
+#addContainer {
+    height: 100%;
+    padding: 10px;
+    background: #c9d0de; border: 1px solid #e1e1e1;
+    overflow: scroll;
+}
+
+#addHeader{
+    height: 40px;
+    padding: 5px;
+    text-align: center;
+}
+
+#addBody{
+    height: 100%;
+    font-family: sans-serif; font-size: 13px; color: #445668; text-shadow: 0px -1px 0px #334f71;
+    overflow: scroll;
+
+}
+
+#newRecord{
+   position: relative;
+   top: -25px;
+
+}
+
+#addFooter{
+    position: relative;
+    text-align: center;
+}
+
+#errors{
+    color: #FF0000;
+}
+
+body, div, h1, form, fieldset, input, textarea {
+    margin: 0; padding: 0; border: 0; outline: none;
+}
+
+body{
+    background: #728eaa;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C), color-stop(100%,#728EAA));
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+h1{
+    font-size: 23px; color: #445668; text-transform: uppercase;
+    text-align: center; margin: 0 0 35px 0; text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+h2{
+    font-size: 18px; color: #445668; text-transform: uppercase;
+    text-align: left; margin: 0 0 35px 0; text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+input{
+    display: block;
+    padding: 2px;
+    background: #728eaa;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C), color-stop(100%,#728EAA));
+    color: #e1e1e1;
+    font-size: 13px;
+}
+
+textarea{
+    background: #728eaa;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#25303C), color-stop(100%,#728EAA));
+    color: #e1e1e1;
+    font-size: 13px;
+
+}
+
+input.btn{
+    position: relative;
+    left: 90px;
+    margin-top: 5px;
+}
+
+fieldset{
+    border: 1px solid #e1e1e1;
+    margin-top: 15px;
+    width: 255px;
+}
+
+ul{
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+li{
+    margin-top: 5px;
+    margin-left: 10px;
+}
