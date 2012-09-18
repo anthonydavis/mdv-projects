@@ -3,7 +3,7 @@
  * Name: Anthony Davis
  * Class: VFW
  * Term: 1209
- * Project: Web App Part 3
+ * Project: Web App Part 4
  *
  **/
 
@@ -95,8 +95,8 @@ window.addEventListener("DOMContentLoaded", function(){
     function getData(){
 
         if(localStorage.length ===0){
-            alert("There is No Data To Display");
-            return false;
+            alert("There is No Data To Display, Default Data Added.");
+            autoFillData();
         }
 
         toggleControls("on");
@@ -287,6 +287,18 @@ window.addEventListener("DOMContentLoaded", function(){
             alert("Contact was NOT deleted");
         }
     }
+
+    // Auto Populate Local Storage
+    function autoFillData(){
+        // the actual JSON object data required is coming from our json.js file which is loaded from additem.html page
+        // Store the JSON object in to local storage
+        for(var n in json){
+            var id = Math.floor(Math.random()* 100000001);
+            localStorage.setItem(id, JSON.stringify(json[n]))
+        }
+
+    }
+
 
     // Variable defaults
     var musicCategory = ["-- Choose A Style Category --", "80\'s", "Classical", "Country", "Metal", "Rap", "Rock"];
