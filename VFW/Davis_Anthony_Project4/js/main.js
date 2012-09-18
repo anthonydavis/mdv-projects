@@ -129,6 +129,7 @@ window.addEventListener("DOMContentLoaded", function(){
             var addBreak = document.createElement("br");
             makeList.appendChild(addBreak);
 
+            getImage(obj.group[1],makeSubList);
             for(var n in obj){
                 var makeSubLi = document.createElement("li");
                 makeSubList.appendChild(makeSubLi);
@@ -299,9 +300,18 @@ window.addEventListener("DOMContentLoaded", function(){
 
     }
 
+    // Get image for right category
+    function getImage(catName, makeSubList){
+        var imageLi = document.createElement("li");
+        makeSubList.appendChild(imageLi);
+        var newImage = document.createElement("img");
+        var setSource = newImage.setAttribute("src", "images/" + catName + ".png");
+        imageLi.appendChild(newImage);
+    }
+
 
     // Variable defaults
-    var musicCategory = ["-- Choose A Style Category --", "80\'s", "Classical", "Country", "Metal", "Rap", "Rock"];
+    var musicCategory = ["-- Choose A Style Category --", "80s", "Classical", "Country", "Metal", "Rap", "Rock"];
     var conditionValue;
     makeCats();
 
